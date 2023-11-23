@@ -23,9 +23,10 @@ const displayContent = (data) => {
     console.log(data.status);
     const contentContainer = document.getElementById("contentContainer")
     contentContainer.innerHTML = ""
+    contentContainer.classList.remove("content-container")
     if(data.status === false){
         const div = document.createElement("div")
-        contentContainer.classList.remove("content-container")
+        
         div.innerHTML = `
         <div class="no-content-message-container">
             <img src="images/Icon.png" alt="">
