@@ -16,15 +16,15 @@ const showCategoriesBtn = (data) => {
 const handleCategory = async(id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
     const data = await res.json()
-    displayContent(data);
+    displayContentChecking(data);
 }
 
-const displayContent = (data) => {
-    console.log(data.status);
+const displayContentChecking = (data) => {
     const contentContainer = document.getElementById("contentContainer")
-    contentContainer.innerHTML = ""
-    contentContainer.classList.remove("content-container")
+    
     if(data.status === false){
+        contentContainer.innerHTML = ""
+        contentContainer.classList.remove("content-container")
         const div = document.createElement("div")
         
         div.innerHTML = `
@@ -36,16 +36,62 @@ const displayContent = (data) => {
         contentContainer.appendChild(div)
         return
     }
+
+    displayContent(data.data)
+    
+}
+
+const timeConverter = (second) => {
+    let minute = 0;
+    let hour = 0;
+    let day = 0;
+    let month = 0;
+    let year = 0;
+    if(second){
+        minute = Math.floor(second/60)
+        if(minute >= 60){
+            hour = Math.floor(minute/60)
+            minute = minute%60
+            if(hour >= 24){
+                day = Math.floor(hour/24)
+                hour = hour%24
+                if(day >= 30){
+                    month = Math.floor(day/30)
+                    day = day%30
+                    if(month >= 12){
+                        year = Math.floor(month/12)
+                        month = month%12
+                    }
+                }
+            }
+        }
+    }
+
+    return {
+        minute : minute,
+        hour : hour,
+        day : day,
+        month : month,
+        year : year
+    }
+}
+
+
+const displayContent = (data) => {
+    const contentContainer = document.getElementById("contentContainer")
     contentContainer.classList.add("content-container")
-    data.data.forEach(content => {
-        console.log(content);
+    contentContainer.innerHTML = ""
+
+    data.forEach(content => {
+        const timeObj = timeConverter(content.others.posted_date)
+
         const div = document.createElement("div")
         div.innerHTML = `
         <div class="content">
         <div class="card border-0">
             <img class="content-img" src="${content.thumbnail}" alt="">
-            <div class="card-img-overlay">
-                <small class="position-absolute bottom-0 end-0 bg-black text-light rounded-2 px-2 pb-1 m-2 fw-light">some text</small>
+            <div id="postedDate" class="card-img-overlay">
+                ${content.others.posted_date ? `<small class="position-absolute bottom-0 end-0 bg-black text-light rounded-2 px-2 pb-1 m-2 fw-light">${timeObj.year ? (timeObj.year + " year ago") : (timeObj.month ? (timeObj.month + " month ago") : (timeObj.day ? (timeObj.day +" day ago") : (timeObj.hour + "hrs " + timeObj.minute + " min ago")))}</small>` : ''}
             </div>
         </div>
         <div>
@@ -61,8 +107,22 @@ const displayContent = (data) => {
     </div>
         `
         contentContainer.appendChild(div)
+
     });
 }
 
 categories()
 handleCategory("1000")
+
+const handleSort = async(id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
+    const data = await res.json()    
+
+    const sortedData = data.data.sort((a, b) => {
+        return parseFloat(b.others.views) - parseFloat(a.others.views)
+    })
+
+    displayContent(sortedData);
+
+}
+
