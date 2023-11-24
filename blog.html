@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="blog.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>PH-Blog</title>
+</head>
+<body class="body">
+    <main>
+        <section class="accordion-section">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item bg-dark text-light">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Discuss the scope of var, let, and const
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <code class="fs-6 fw-bold">VAR</code><br>
+                        <li>Var variable is functional scope and var variables that can be reassigned another value.</li>
+                        <li>They are visible throughout the entire function, even if declared inside a block statement.</li>
+                        <code class="fs-6 fw-bold">LET</code><br>
+                        <li>Let variable is block scope and let create variables that can be reassigned another value.</li>
+                        <li>They are visible only within the block in which they are declared, enclosed by curly braces.</li>
+                        <code class="fs-6 fw-bold">CONST</code><br>
+                        <li>Const variable is block scope and const variables that cannot be reassigned another value.</li>
+                        <li>They are visible only within the block in which they are declared, enclosed by curly braces.</li>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-dark text-light">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Tell us the use cases of null and undefined
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <code class="fs-6 fw-bold">NULL</code><br>
+                        <li>Null is a reserve keyword of javascript and it is special value that represents an empty or unknown value, Use null when you want to represent the intentional absence of a value</li>
+                        <code class="fs-6 fw-bold">UNDEFINED</code><br>
+                        <li>Undefined is a reserve keyword of javascript and it is a built-in value in JavaScript that helps indicate when a variable or property has not been assigned a value or when a value is not available</li>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-dark text-light">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        What do you mean by REST API?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <code class="fs-6 fw-bold">REST API</code><br>
+                        <li>REST API is a API interface that two computer systems use to exchange information securely over the internet and it is a way of accessing web services in a simple and flexible way without having any processing.</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+    </main>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
